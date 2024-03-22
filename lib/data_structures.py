@@ -1,3 +1,5 @@
+# data_structures.py
+
 spicy_foods = [
     {
         "name": "Green Curry",
@@ -17,39 +19,29 @@ spicy_foods = [
 ]
 
 def get_names(spicy_foods):
-    return[spicy_food['name']for spicy_food in spicy_foods]
-    pass
+    return [food["name"] for food in spicy_foods]
 
 def get_spiciest_foods(spicy_foods):
-    return[spiciest_food for spiciest_food in spicy_foods if spiciest_food.get('heat_level',0)>5]
-    pass
+    return [food for food in spicy_foods if food["heat_level"] > 5]
 
 def print_spicy_foods(spicy_foods):
-    for spicy_food in spicy_foods:
-        heat_level = "🌶" * spicy_food ["heat_level"]
-        print(f"{spicy_food['name']} ({spicy_food['cuisine']}) | Heat Level: {'heat_level'}")
-    pass
+    for food in spicy_foods:
+        print(f"{food['name']} ({food['cuisine']}) | Heat Level: {'🌶' * food['heat_level']}")
 
 def get_spicy_food_by_cuisine(spicy_foods, cuisine):
-    for spicy_food in spicy_foods:
-        if spicy_food["cuisine"] == cuisine:
-         return spicy_food 
-    pass
+    for food in spicy_foods:
+        if food["cuisine"] == cuisine:
+            return food
+    return None
 
 def print_spiciest_foods(spicy_foods):
-    for spicy_food in spicy_foods:
-        heat_level = "🌶"* spicy_food["heat_level"]
-        if spicy_food ["heat_level"] >5:
-            print(f"{spicy_food['name']}({spicy_food['cuisine']})|Heat Level:{'heat_level'}")
-    pass
+    spiciest_foods = get_spiciest_foods(spicy_foods)
+    print_spicy_foods(spiciest_foods)
 
 def get_average_heat_level(spicy_foods):
-    total_heat_level = sum(spicy_food["heat_level"]for spicy_food in spicy_foods)
-    average_heat_level = total_heat_level / len(spicy_foods)
-    return average_heat_level
-    pass
+    total_heat_level = sum(food["heat_level"] for food in spicy_foods)
+    return total_heat_level // len(spicy_foods)
 
-def create_spicy_food(spicy_foods, spicy_food):
-    spicy_foods.append(spicy_food)
+def create_spicy_food(spicy_foods, new_spicy_food):
+    spicy_foods.append(new_spicy_food)
     return spicy_foods
-    pass
